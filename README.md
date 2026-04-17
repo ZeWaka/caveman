@@ -1,17 +1,7 @@
-<p align="center">
-  <img src="https://em-content.zobj.net/source/apple/391/rock_1faa8.png" width="120" />
-</p>
-
 <h1 align="center">caveman</h1>
 
 <p align="center">
   <strong>why use many token when few do trick</strong>
-</p>
-
-<p align="center">
-  <a href="https://github.com/JuliusBrussee/caveman/stargazers"><img src="https://img.shields.io/github/stars/JuliusBrussee/caveman?style=flat&color=yellow" alt="Stars"></a>
-  <a href="https://github.com/JuliusBrussee/caveman/commits/main"><img src="https://img.shields.io/github/last-commit/JuliusBrussee/caveman?style=flat" alt="Last Commit"></a>
-  <a href="LICENSE"><img src="https://img.shields.io/github/license/JuliusBrussee/caveman?style=flat" alt="License"></a>
 </p>
 
 <p align="center">
@@ -25,9 +15,7 @@
 
 ---
 
-A [Claude Code](https://docs.anthropic.com/en/docs/claude-code) skill/plugin and Codex plugin that makes agent talk like caveman — cutting **~75% of output tokens** while keeping full technical accuracy. Now with [文言文 mode](#文言文-wenyan-mode), [terse commits](#caveman-commit), [one-line code reviews](#caveman-review), and a [compression tool](#caveman-compress) that cuts **~46% of input tokens** every session.
-
-Based on the viral observation that caveman-speak dramatically reduces LLM token usage without losing technical substance. So we made it a one-line install.
+A [Claude Code](https://docs.anthropic.com/en/docs/claude-code) skill/plugin and Codex plugin that makes agent talk like caveman.
 
 ## Before / After
 
@@ -93,32 +81,8 @@ Based on the viral observation that caveman-speak dramatically reduces LLM token
 > "Inline obj prop → new ref → re-render. `useMemo`."
 
 </td>
-<td width="25%">
-
-#### 📜 文言文
-
-> "物出新參照，致重繪。useMemo Wrap之。"
-
-</td>
 </tr>
 </table>
-
-**Same answer. You pick how many word.**
-
-```
-┌─────────────────────────────────────┐
-│  TOKENS SAVED          ████████ 75% │
-│  TECHNICAL ACCURACY    ████████ 100%│
-│  SPEED INCREASE        ████████ ~3x │
-│  VIBES                 ████████ OOG │
-└─────────────────────────────────────┘
-```
-
-- **Faster response** — less token to generate = speed go brrr
-- **Easier to read** — no wall of text, just the answer
-- **Same accuracy** — all technical info kept, only fluff removed ([science say so](https://arxiv.org/abs/2604.00025))
-- **Save money** — ~71% less output token = less cost
-- **Fun** — every code review become comedy
 
 ## Install
 
@@ -126,14 +90,14 @@ Pick your agent. One command. Done.
 
 | Agent | Install |
 |-------|---------|
-| **Claude Code** | `claude plugin marketplace add JuliusBrussee/caveman && claude plugin install caveman@caveman` |
+| **Claude Code** | `claude plugin marketplace add ZeWaka/caveman && claude plugin install caveman@caveman` |
 | **Codex** | Clone repo → `/plugins` → Search "Caveman" → Install |
-| **Gemini CLI** | `gemini extensions install https://github.com/JuliusBrussee/caveman` |
-| **Cursor** | `npx skills add JuliusBrussee/caveman -a cursor` |
-| **Windsurf** | `npx skills add JuliusBrussee/caveman -a windsurf` |
-| **Copilot** | `npx skills add JuliusBrussee/caveman -a github-copilot` |
-| **Cline** | `npx skills add JuliusBrussee/caveman -a cline` |
-| **Any other** | `npx skills add JuliusBrussee/caveman` |
+| **Gemini CLI** | `gemini extensions install https://github.com/ZeWaka/caveman` |
+| **Cursor** | `npx skills add ZeWaka/caveman -a cursor` |
+| **Windsurf** | `npx skills add ZeWaka/caveman -a windsurf` |
+| **Copilot** | `npx skills add ZeWaka/caveman -a github-copilot` |
+| **Cline** | `npx skills add ZeWaka/caveman -a cline` |
+| **Any other** | `npx skills add ZeWaka/caveman` |
 
 Install once. Use in every session for that install target after that. One rock. That it.
 
@@ -151,7 +115,6 @@ Auto-activation is built in for Claude Code, Gemini CLI, and the repo-local Code
 | caveman-commit | Y | — | Y | Y | Y | Y | Y |
 | caveman-review | Y | — | Y | Y | Y | Y | Y |
 | caveman-compress | Y | Y | Y | Y | Y | Y | Y |
-| caveman-help | Y | — | Y | Y | Y | Y | Y |
 
 > [!NOTE]
 > Auto-activation works differently per agent: Claude Code uses SessionStart hooks, this repo's Codex dogfood setup uses `.codex/hooks.json`, Gemini uses context files. Cursor/Windsurf/Cline/Copilot can be made always-on, but `npx skills add` installs only the skill, not the repo rule/instruction files.
@@ -167,17 +130,17 @@ Auto-activation is built in for Claude Code, Gemini CLI, and the repo-local Code
 The plugin install gives you skills + auto-loading hooks. If no custom `statusLine` is configured, Caveman nudges Claude to offer badge setup on first session.
 
 ```bash
-claude plugin marketplace add JuliusBrussee/caveman
+claude plugin marketplace add ZeWaka/caveman
 claude plugin install caveman@caveman
 ```
 
 **Standalone hooks (without plugin):** If you prefer not to use the plugin system:
 ```bash
 # macOS / Linux / WSL
-bash <(curl -s https://raw.githubusercontent.com/JuliusBrussee/caveman/main/hooks/install.sh)
+bash <(curl -s https://raw.githubusercontent.com/ZeWaka/caveman/main/hooks/install.sh)
 
 # Windows (PowerShell)
-irm https://raw.githubusercontent.com/JuliusBrussee/caveman/main/hooks/install.ps1 | iex
+irm https://raw.githubusercontent.com/ZeWaka/caveman/main/hooks/install.ps1 | iex
 ```
 
 Or from a local clone: `bash hooks/install.sh` / `powershell -File hooks\install.ps1`
@@ -217,13 +180,13 @@ codex_hooks = true
 <summary><strong>Gemini CLI — full details</strong></summary>
 
 ```bash
-gemini extensions install https://github.com/JuliusBrussee/caveman
+gemini extensions install https://github.com/ZeWaka/caveman
 ```
 
 Update: `gemini extensions update caveman` · Uninstall: `gemini extensions uninstall caveman`
 
 Auto-activates via `GEMINI.md` context file. Also ships custom Gemini commands:
-- `/caveman` — switch intensity level (lite/full/ultra/wenyan)
+- `/caveman` — switch intensity level (lite/full/ultra)
 - `/caveman-commit` — generate terse commit message
 - `/caveman-review` — one-line code review
 
@@ -236,10 +199,10 @@ Auto-activates via `GEMINI.md` context file. Also ships custom Gemini commands:
 
 | Agent | Command | Not installed | Mode switching | Always-on location |
 |-------|---------|--------------|:--------------:|--------------------|
-| Cursor | `npx skills add JuliusBrussee/caveman -a cursor` | `.cursor/rules/caveman.mdc` | Y | Cursor rules |
-| Windsurf | `npx skills add JuliusBrussee/caveman -a windsurf` | `.windsurf/rules/caveman.md` | Y | Windsurf rules |
-| Cline | `npx skills add JuliusBrussee/caveman -a cline` | `.clinerules/caveman.md` | — | Cline rules or system prompt |
-| Copilot | `npx skills add JuliusBrussee/caveman -a github-copilot` | `.github/copilot-instructions.md` + `AGENTS.md` | — | Copilot custom instructions |
+| Cursor | `npx skills add ZeWaka/caveman -a cursor` | `.cursor/rules/caveman.mdc` | Y | Cursor rules |
+| Windsurf | `npx skills add ZeWaka/caveman -a windsurf` | `.windsurf/rules/caveman.md` | Y | Windsurf rules |
+| Cline | `npx skills add ZeWaka/caveman -a cline` | `.clinerules/caveman.md` | — | Cline rules or system prompt |
+| Copilot | `npx skills add ZeWaka/caveman -a github-copilot` | `.github/copilot-instructions.md` + `AGENTS.md` | — | Copilot custom instructions |
 
 Uninstall: `npx skills remove caveman`
 
@@ -253,18 +216,18 @@ Copilot works with Chat, Edits, and Coding Agent.
 [npx skills](https://github.com/vercel-labs/skills) supports 40+ agents:
 
 ```bash
-npx skills add JuliusBrussee/caveman           # auto-detect agent
-npx skills add JuliusBrussee/caveman -a amp
-npx skills add JuliusBrussee/caveman -a augment
-npx skills add JuliusBrussee/caveman -a goose
-npx skills add JuliusBrussee/caveman -a kiro-cli
-npx skills add JuliusBrussee/caveman -a roo
+npx skills add ZeWaka/caveman           # auto-detect agent
+npx skills add ZeWaka/caveman -a amp
+npx skills add ZeWaka/caveman -a augment
+npx skills add ZeWaka/caveman -a goose
+npx skills add ZeWaka/caveman -a kiro-cli
+npx skills add ZeWaka/caveman -a roo
 # ... and many more
 ```
 
 Uninstall: `npx skills remove caveman`
 
-> **Windows note:** `npx skills` uses symlinks by default. If symlinks fail, add `--copy`: `npx skills add JuliusBrussee/caveman --copy`
+> **Windows note:** `npx skills` uses symlinks by default. If symlinks fail, add `--copy`: `npx skills add ZeWaka/caveman --copy`
 
 **Important:** These agents don't have a hook system, so caveman won't auto-start. Say `/caveman` or "talk like caveman" to activate each session.
 
@@ -307,16 +270,6 @@ Stop with: "stop caveman" or "normal mode"
 | **Full** | `/caveman full` | Default caveman. Drop articles, fragments, full grunt |
 | **Ultra** | `/caveman ultra` | Maximum compression. Telegraphic. Abbreviate everything |
 
-### 文言文 (Wenyan) Mode
-
-Classical Chinese literary compression — same technical accuracy, but in the most token-efficient written language humans ever invented.
-
-| Level | Trigger | What it do |
-|-------|---------|------------|
-| **Wenyan-Lite** | `/caveman wenyan-lite` | Semi-classical. Grammar intact, filler gone |
-| **Wenyan-Full** | `/caveman wenyan` | Full 文言文. Maximum classical terseness |
-| **Wenyan-Ultra** | `/caveman wenyan-ultra` | Extreme. Ancient scholar on a budget |
-
 Level stick until you change it or session end.
 
 ## Caveman Skills
@@ -328,10 +281,6 @@ Level stick until you change it or session end.
 ### caveman-review
 
 `/caveman-review` — one-line PR comments: `L42: 🔴 bug: user null. Add guard.` No throat-clearing.
-
-### caveman-help
-
-`/caveman-help` — quick-reference card. All modes, skills, commands, one command away.
 
 ### caveman-compress
 
@@ -359,57 +308,10 @@ CLAUDE.original.md ← human-readable backup (you read and edit this)
 
 Code blocks, URLs, file paths, commands, headings, dates, version numbers — anything technical passes through untouched. Only prose gets compressed. See the full [caveman-compress README](caveman-compress/README.md) for details. [Security note](./caveman-compress/SECURITY.md): Snyk flags this as High Risk due to subprocess/file patterns — it's a false positive.
 
-## Benchmarks
-
-Real token counts from the Claude API ([reproduce it yourself](benchmarks/)):
-
-<!-- BENCHMARK-TABLE-START -->
-| Task | Normal (tokens) | Caveman (tokens) | Saved |
-|------|---------------:|----------------:|------:|
-| Explain React re-render bug | 1180 | 159 | 87% |
-| Fix auth middleware token expiry | 704 | 121 | 83% |
-| Set up PostgreSQL connection pool | 2347 | 380 | 84% |
-| Explain git rebase vs merge | 702 | 292 | 58% |
-| Refactor callback to async/await | 387 | 301 | 22% |
-| Architecture: microservices vs monolith | 446 | 310 | 30% |
-| Review PR for security issues | 678 | 398 | 41% |
-| Docker multi-stage build | 1042 | 290 | 72% |
-| Debug PostgreSQL race condition | 1200 | 232 | 81% |
-| Implement React error boundary | 3454 | 456 | 87% |
-| **Average** | **1214** | **294** | **65%** |
-
-*Range: 22%–87% savings across prompts.*
-<!-- BENCHMARK-TABLE-END -->
-
 > [!IMPORTANT]
 > Caveman only affects output tokens — thinking/reasoning tokens are untouched. Caveman no make brain smaller. Caveman make *mouth* smaller. Biggest win is **readability and speed**, cost savings are a bonus.
 
 A March 2026 paper ["Brevity Constraints Reverse Performance Hierarchies in Language Models"](https://arxiv.org/abs/2604.00025) found that constraining large models to brief responses **improved accuracy by 26 percentage points** on certain benchmarks and completely reversed performance hierarchies. Verbose not always better. Sometimes less word = more correct.
-
-## Evals
-
-Caveman not just claim 75%. Caveman **prove** it.
-
-The `evals/` directory has a three-arm eval harness that measures real token compression against a proper control — not just "verbose vs skill" but "terse vs skill". Because comparing caveman to verbose Claude conflate the skill with generic terseness. That cheating. Caveman not cheat.
-
-```bash
-# Run the eval (needs claude CLI)
-uv run python evals/llm_run.py
-
-# Read results (no API key, runs offline)
-uv run --with tiktoken python evals/measure.py
-```
-
-## Star This Repo
-
-If caveman save you mass token, mass money — leave mass star. ⭐
-
-[![Star History Chart](https://api.star-history.com/svg?repos=JuliusBrussee/caveman&type=Date)](https://star-history.com/#JuliusBrussee/caveman&Date)
-
-## Also by Julius Brussee
-
-- **[Cavekit](https://github.com/JuliusBrussee/cavekit)** — specification-driven development for Claude Code. Caveman language → specs → parallel builds → working software.
-- **[Revu](https://github.com/JuliusBrussee/revu-swift)** — local-first macOS study app with FSRS spaced repetition, decks, exams, and study guides. [revu.cards](https://revu.cards)
 
 ## License
 
